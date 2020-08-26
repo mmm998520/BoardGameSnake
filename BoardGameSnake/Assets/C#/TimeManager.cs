@@ -28,6 +28,10 @@ namespace com.Board.Game.Snake
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.A) && myturn)
+            {
+                setBoom();
+            }
             if (myturn)
             {
                 timer -= Time.deltaTime;
@@ -95,6 +99,7 @@ namespace com.Board.Game.Snake
             if (playerManager.haveBoom)
             {
                 Instantiate(boomReal, playerManager.transform.position,Quaternion.identity);
+                playerManager.haveBoom = false;
             }
         }
     }
