@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8f4f66db60eca46948210b88904580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fake:
+  - {x: 0, y: 0}
 --- !u!50 &119754851
 Rigidbody2D:
   serializedVersion: 4
@@ -263,6 +265,7 @@ GameObject:
   - component: {fileID: 146122315}
   - component: {fileID: 146122316}
   - component: {fileID: 146122317}
+  - component: {fileID: 146122318}
   m_Layer: 0
   m_Name: line
   m_TagString: Untagged
@@ -397,6 +400,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &146122318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146122314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f303bb19d8008145a1ba21e07f3f1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &163528276
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8f4f66db60eca46948210b88904580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fake:
+  - {x: 0, y: 0}
 --- !u!50 &163528278
 Rigidbody2D:
   serializedVersion: 4
@@ -714,6 +731,7 @@ GameObject:
   - component: {fileID: 1565849928}
   - component: {fileID: 1565849929}
   - component: {fileID: 1565849930}
+  - component: {fileID: 1565849931}
   m_Layer: 0
   m_Name: 'line '
   m_TagString: Untagged
@@ -849,3 +867,15 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1565849931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565849927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f303bb19d8008145a1ba21e07f3f1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

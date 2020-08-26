@@ -8,7 +8,7 @@ namespace com.Board.Game.Snake
     public class PlayerManager : MonoBehaviour
     {
         Vector2[] real = new Vector2[0];//短的(真的能碰到
-        Vector2[] fake = new Vector2[1] {Vector2.zero};//長的
+        public Vector2[] fake = new Vector2[1] {Vector2.zero};//長的
         void Start()
         {
             //transform.parent.GetComponent<EdgeCollider2D>().points[0] = new Vector2(transform.position.x,transform.position.y);
