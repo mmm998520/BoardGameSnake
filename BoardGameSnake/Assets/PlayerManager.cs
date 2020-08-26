@@ -7,17 +7,9 @@ namespace com.Board.Game.Snake
 {
     public class PlayerManager : MonoBehaviour
     {
+        public TimeManager timeManager;
         Vector2[] real = new Vector2[0];//短的(真的能碰到
         public Vector2[] fake = new Vector2[1] {Vector2.zero};//長的
-        void Start()
-        {
-            //transform.parent.GetComponent<EdgeCollider2D>().points[0] = new Vector2(transform.position.x,transform.position.y);
-        }
-
-        void Update()
-        {
-
-        }
 
         void OnMouseDrag()
         {
@@ -25,6 +17,7 @@ namespace com.Board.Game.Snake
             mouse_p.z = transform.position.z;
             if (Vector3.Distance(mouse_p, transform.position)>0.1f)
             {
+                timeManager.lessDis(0.1f);
                 Vector2[] tempF = new Vector2[fake.Length + 1];
                 for (int i = 0; i < fake.Length; i++)
                 {

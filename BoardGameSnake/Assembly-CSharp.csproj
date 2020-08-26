@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PlayerManager.cs" />
+    <Compile Include="Assets\TimeManager.cs" />
     <Compile Include="Assets\TrailManager.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Dmmm998520/software/Unity/2019.4.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
