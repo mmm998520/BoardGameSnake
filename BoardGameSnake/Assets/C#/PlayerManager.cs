@@ -11,7 +11,7 @@ namespace com.Board.Game.Snake
         public Vector2[] real = new Vector2[0];//短的(真的能碰到
         public Vector2[] fake = new Vector2[1] {Vector2.zero};//長的
         public GameObject hurt;
-        bool haveBoom = false;
+        public bool haveBoom = false;
 
         void Update()
         {
@@ -113,7 +113,7 @@ namespace com.Board.Game.Snake
             StartCoroutine("Hurt");
         }
 
-        void OnTriggerEnter(Collider other)
+        void OnTriggerEnter2D(Collider2D other)
         {
             if(other.name == "boom(item)" && !haveBoom)
             {

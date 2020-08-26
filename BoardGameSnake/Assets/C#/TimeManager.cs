@@ -15,6 +15,8 @@ namespace com.Board.Game.Snake
 
         public bool myturn;
         public GameObject hurt;
+        public PlayerManager playerManager;
+        public GameObject boomReal;
         void Start()
         {
             Time.timeScale = 0;
@@ -86,6 +88,14 @@ namespace com.Board.Game.Snake
         public void openLess()//只有p1開啟
         {
             TrailManager.less = true;
+        }
+
+        public void setBoom()
+        {
+            if (playerManager.haveBoom)
+            {
+                Instantiate(boomReal, playerManager.transform.position,Quaternion.identity);
+            }
         }
     }
 }

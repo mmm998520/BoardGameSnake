@@ -155,9 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeManager: {fileID: 1804797402}
+  real: []
   fake:
   - {x: 0, y: 0}
   hurt: {fileID: 650214496}
+  haveBoom: 0
 --- !u!50 &119754851
 Rigidbody2D:
   serializedVersion: 4
@@ -448,9 +450,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeManager: {fileID: 580650123}
+  real: []
   fake:
   - {x: 0, y: 0}
   hurt: {fileID: 650214496}
+  haveBoom: 0
 --- !u!50 &163528278
 Rigidbody2D:
   serializedVersion: 4
@@ -769,7 +773,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 412583524}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 580650123}
+        m_MethodName: setBoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &412583524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +876,9 @@ MonoBehaviour:
   dis: 0
   myturn: 1
   hurt: {fileID: 650214496}
+  playerManager: {fileID: 163528277}
+  boomReal: {fileID: 7282393706015400136, guid: b179b8e0397bd504bb794df8fd68a946,
+    type: 3}
 --- !u!1 &650214496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,6 +1933,9 @@ MonoBehaviour:
   dis: 0
   myturn: 1
   hurt: {fileID: 650214496}
+  playerManager: {fileID: 119754850}
+  boomReal: {fileID: 7282393706015400136, guid: b179b8e0397bd504bb794df8fd68a946,
+    type: 3}
 --- !u!1 &1927457785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2088,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1997540308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1804797402}
+        m_MethodName: setBoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1997540308
 MonoBehaviour:
   m_ObjectHideFlags: 0
