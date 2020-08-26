@@ -30,6 +30,18 @@ namespace com.Board.Game.Snake
                             lineRenderer.SetPosition(i, lineRenderer.GetPosition(i + 1));
                         }
                         playerManager.fake = temp;
+                        int len = 8;
+                        if (playerManager.fake.Length > len)
+                        {
+                            playerManager.real = new Vector2[playerManager.fake.Length - len];
+                            for (int i = 0; i < playerManager.real.Length; i++)
+                            {
+                                playerManager.real[i] = playerManager.fake[i];
+                            }
+                        }
+                        EdgeCollider2D edgeCollider2D = transform.GetComponent<EdgeCollider2D>();
+                        edgeCollider2D.points = playerManager.real;
+
                         lineRenderer.positionCount--;
                     }
                 }
