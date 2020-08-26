@@ -14,6 +14,7 @@ namespace com.Board.Game.Snake
         public float dis;
 
         public bool myturn;
+        public GameObject hurt;
         void Start()
         {
             Time.timeScale = 0;
@@ -38,9 +39,19 @@ namespace com.Board.Game.Snake
 
                 if(timeBar.localScale.y< transform.GetChild(1).localScale.y)
                 {
-                    print("a");
+                    print(name);
+                    StartCoroutine("Hurt");
                 }
             }
+        }
+
+        WaitForSeconds wait = new WaitForSeconds(0.5f);
+        IEnumerator Hurt()
+        {
+            lessDis(1);
+            hurt.SetActive(true);
+            yield return wait;
+            hurt.SetActive(false);
         }
 
         public void lessDis(float move)

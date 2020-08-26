@@ -10,6 +10,7 @@ namespace com.Board.Game.Snake
         public TimeManager timeManager;
         Vector2[] real = new Vector2[0];//短的(真的能碰到
         public Vector2[] fake = new Vector2[1] {Vector2.zero};//長的
+        public GameObject hurt;
 
         void OnMouseDrag()
         {
@@ -57,7 +58,16 @@ namespace com.Board.Game.Snake
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            print(collision.transform.name);
+            print(name);
+            StartCoroutine("Hurt");
+        }
+
+        WaitForSeconds wait = new WaitForSeconds(0.5f);
+        IEnumerator Hurt()
+        {
+            hurt.SetActive(true);
+            yield return wait;
+            hurt.SetActive(false);
         }
     }
 }
