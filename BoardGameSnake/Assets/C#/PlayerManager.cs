@@ -19,7 +19,7 @@ namespace com.Board.Game.Snake
             {
                 Vector3 touches_p = Camera.main.ScreenToWorldPoint(new Vector3(Input.touches[i].position.x, Input.touches[i].position.y, 0));
                 touches_p.z = transform.position.z;
-                if (Vector3.Distance(touches_p, transform.position) < 1)
+                if (Vector3.Distance(touches_p, transform.position) < 0.4f)
                 {
                     if (timeManager.dis > 0)
                     {
@@ -65,60 +65,65 @@ namespace com.Board.Game.Snake
 
         void OnMouseDrag()
         {
-            if (timeManager.dis > 0)
+            if(Input.touchCount == 0)
             {
-                Vector3 mouse_p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-                mouse_p.z = transform.position.z;
-                if (Vector3.Distance(mouse_p, transform.position)>0.05f)
+                if (timeManager.dis > 0)
                 {
-                    timeManager.lessDis(0.1f);
-                    Vector2[] tempF = new Vector2[fake.Length + 1];
-                    for (int i = 0; i < fake.Length; i++)
+                    Vector3 mouse_p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+                    mouse_p.z = transform.position.z;
+                    if (Vector3.Distance(mouse_p, transform.position) > 0.05f)
                     {
-                        tempF[i] = fake[i];
-                    }
-                    tempF[fake.Length] = mouse_p;
-                    if (fake.Length <= 1)
-                    {
-                        tempF[0] = transform.position;
-                    }
-                    fake = tempF;
-                    int len = 8;
-                    if (fake.Length > len)
-                    {
-                        real = new Vector2[fake.Length - len];
-                        for(int i = 0; i < real.Length; i++)
+                        timeManager.lessDis(0.1f);
+                        Vector2[] tempF = new Vector2[fake.Length + 1];
+                        for (int i = 0; i < fake.Length; i++)
                         {
-                            real[i] = fake[i];
+                            tempF[i] = fake[i];
                         }
-                    }
-                    EdgeCollider2D edgeCollider2D = transform.parent.GetComponent<EdgeCollider2D>();
-                    edgeCollider2D.points = real;
+                        tempF[fake.Length] = mouse_p;
+                        if (fake.Length <= 1)
+                        {
+                            tempF[0] = transform.position;
+                        }
+                        fake = tempF;
+                        int len = 8;
+                        if (fake.Length > len)
+                        {
+                            real = new Vector2[fake.Length - len];
+                            for (int i = 0; i < real.Length; i++)
+                            {
+                                real[i] = fake[i];
+                            }
+                        }
+                        EdgeCollider2D edgeCollider2D = transform.parent.GetComponent<EdgeCollider2D>();
+                        edgeCollider2D.points = real;
 
-                    LineRenderer lineRenderer = transform.parent.GetComponent<LineRenderer>();
-                    if(lineRenderer.positionCount++ <= 1)
-                    {
-                        lineRenderer.SetPosition(0, transform.position);
-                    }
-                    lineRenderer.SetPosition(lineRenderer.positionCount - 1, mouse_p);
+                        LineRenderer lineRenderer = transform.parent.GetComponent<LineRenderer>();
+                        if (lineRenderer.positionCount++ <= 1)
+                        {
+                            lineRenderer.SetPosition(0, transform.position);
+                        }
+                        lineRenderer.SetPosition(lineRenderer.positionCount - 1, mouse_p);
 
-                    transform.position = mouse_p;
+                        transform.position = mouse_p;
+                    }
                 }
             }
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            print(name);
-            StartCoroutine("Hurt");
-        }
-
         void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.name == "boom(item)" && !haveBoom)
+            if(other.name == "boom(item)")
             {
-                Destroy(other.gameObject);
-                haveBoom = true;
+                if (!haveBoom)
+                {
+                    Destroy(other.gameObject);
+                    haveBoom = true;
+                }
+            }
+            else
+            {
+                print(name);
+                StartCoroutine("Hurt");
             }
         }
 

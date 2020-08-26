@@ -20,8 +20,8 @@ namespace com.Board.Game.Snake
         void Start()
         {
             Time.timeScale = 0;
-            maxTimeBarLong = transform.GetChild(0).localScale.y;
-            maxDisBarLong = transform.GetChild(1).localScale.y;
+            maxTimeBarLong = transform.GetChild(1).localScale.y;
+            maxDisBarLong = transform.GetChild(2).localScale.y;
             timer = maxTimer;
             dis = maxDis;
         }
@@ -40,10 +40,10 @@ namespace com.Board.Game.Snake
                     timer = 0;
                     TrailManager.less = false;
                 }
-                Transform timeBar = transform.GetChild(0);
+                Transform timeBar = transform.GetChild(1);
                 timeBar.localScale = new Vector3(timeBar.localScale.x, maxTimeBarLong * timer / maxTimer, timeBar.localScale.z);
 
-                if(timeBar.localScale.y< transform.GetChild(1).localScale.y)
+                if(timeBar.localScale.y< transform.GetChild(2).localScale.y)
                 {
                     print(name);
                     StartCoroutine("Hurt");
@@ -67,7 +67,7 @@ namespace com.Board.Game.Snake
             {
                 dis = 0;
             }
-            Transform disBar = transform.GetChild(1);
+            Transform disBar = transform.GetChild(2);
             disBar.localScale = new Vector3(disBar.localScale.x, maxDisBarLong * dis / maxDis, disBar.localScale.z);
         }
 
@@ -78,9 +78,9 @@ namespace com.Board.Game.Snake
                 myturn = !myturn;
                 timer = maxTimer;
                 dis = maxDis;
-                Transform timeBar = transform.GetChild(0);
+                Transform timeBar = transform.GetChild(1);
                 timeBar.localScale = new Vector3(timeBar.localScale.x, maxTimeBarLong, timeBar.localScale.z);
-                Transform disBar = transform.GetChild(1);
+                Transform disBar = transform.GetChild(2);
                 disBar.localScale = new Vector3(disBar.localScale.x, maxDisBarLong, disBar.localScale.z);
             }
             else
